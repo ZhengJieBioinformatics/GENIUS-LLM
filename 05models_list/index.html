@@ -794,7 +794,7 @@
 <p>Our <code>src/model/llm_model.py</code> is designed with <strong>zero hardcoded endpoints</strong>. The internal logic treats the LLM as a black-box service defined by three parameters in the configuration:</p>
 <ol>
 <li><strong><code>api_key</code></strong>: User-provided credential.</li>
-<li><strong><code>url</code></strong>: The entry point for the API (e.g., <code>https://api.deepseek.com/v1</code>).</li>
+<li><strong><code>url</code></strong>: The entry point for the API (e.g. <code>https://api.deepseek.com/v1</code> or <code>https://api.openai.com/v1</code> or <code>anyother API endpoints you want to use</code>). </li>
 <li><strong><code>model</code></strong>: The specific model identifier.</li>
 </ol>
 <h3 id="why-use-the-openai-library">Why use the <code>openai</code> library?</h3>

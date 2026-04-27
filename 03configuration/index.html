@@ -526,7 +526,7 @@
   <a href="#model-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model Settings:
+        ·Model Settings:
       
     </span>
   </a>
@@ -537,7 +537,7 @@
   <a href="#mongodb-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mongodb Settings:
+        ·Mongodb Settings:
       
     </span>
   </a>
@@ -548,7 +548,7 @@
   <a href="#data-pathsprocess_data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Paths(process_data):
+        ·Data Paths(process_data):
       
     </span>
   </a>
@@ -559,7 +559,7 @@
   <a href="#data-pathsimport_data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Paths(import_data):
+        ·Data Paths(import_data):
       
     </span>
   </a>
@@ -686,7 +686,7 @@
   <a href="#model-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model Settings:
+        ·Model Settings:
       
     </span>
   </a>
@@ -697,7 +697,7 @@
   <a href="#mongodb-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mongodb Settings:
+        ·Mongodb Settings:
       
     </span>
   </a>
@@ -708,7 +708,7 @@
   <a href="#data-pathsprocess_data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Paths(process_data):
+        ·Data Paths(process_data):
       
     </span>
   </a>
@@ -719,7 +719,7 @@
   <a href="#data-pathsimport_data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Paths(import_data):
+        ·Data Paths(import_data):
       
     </span>
   </a>
@@ -768,17 +768,17 @@
 </code></pre></div></p>
 <h2 id="2-yaml-field-explanations">2. YAML Field Explanations</h2>
 <p>Edit config/data_config.yaml to suit your research:</p>
-<h3 id="model-settings">Model Settings:</h3>
+<h3 id="model-settings">·Model Settings:</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Your LLM service provider key.</span>
 <span class="nt">url: API endpoint (Default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeepSeek).</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Model ID (e.g., deepseek-chat, gpt-4o).</span>
 </code></pre></div>
-<h3 id="mongodb-settings">Mongodb Settings:</h3>
+<h3 id="mongodb-settings">·Mongodb Settings:</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">mongodb</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mongodb://localhost:27017/&quot;</span>
 <span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;arabidopsis_gene_db&quot;</span><span class="w"> </span><span class="c1"># Database names for corresponding species (need to be changed)</span>
 </code></pre></div>
-<h3 id="data-pathsprocess_data">Data Paths(process_data):</h3>
+<h3 id="data-pathsprocess_data">·Data Paths(process_data):</h3>
 <p>You can define multiple data sources here. The type determines which Processor (Blast/TWAS) is used.
 <div class="highlight"><pre><span></span><code><span class="nt">data_paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">blast</span><span class="p">:</span>
@@ -788,7 +788,7 @@
 <span class="w">    </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/yourdata_process/02cultivar&quot;</span>
 <span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/yourdata_process_output/coexpression_output.txt&quot;</span>
 </code></pre></div></p>
-<h3 id="data-pathsimport_data">Data Paths(import_data):</h3>
+<h3 id="data-pathsimport_data">·Data Paths(import_data):</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">data_imports</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">blast</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">input_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/yourdata_process_output/blast_results_text.txt&quot;</span><span class="w">  </span><span class="c1"># Read the gene alignment data from the file &quot;data/test_import/01gene_blast_cleaned.txt&quot; and import it into the MongoDB collection.</span>

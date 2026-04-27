@@ -479,10 +479,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-database-setup-initialization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 数据库设置与初始化
+        4. Database Setup &amp; Initialization
       
     </span>
   </a>
@@ -665,10 +665,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-database-setup-initialization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 数据库设置与初始化
+        4. Database Setup &amp; Initialization
       
     </span>
   </a>
@@ -702,7 +702,7 @@
 <p>Before starting, please ensure your system meets the following requirements to ensure stability:</p>
 <ul>
 <li><strong>Operating System</strong>: Linux (Ubuntu 20.04+, CentOS 7+), macOS, or Windows 10/11.</li>
-<li><strong>Python Version</strong>: 3.8, 3.9, or 3.10 (Tested for stability with asynchronous LLM calls).</li>
+<li><strong>Python Version</strong>: 3.9, 3.10, or 3.12 (Tested for stability with asynchronous LLM calls).</li>
 <li><strong>Database</strong>: <strong>MongoDB</strong> (v4.4 or higher) must be available as the backend for gene annotation storage.</li>
 </ul>
 <hr />
@@ -733,23 +733,33 @@ pip install -e .
 Find out packages that lead to failures, then create a new requirements.txt of them and run:
 <div class="highlight"><pre><span></span><code>pip install -r requirements.txt
 </code></pre></div></p>
-<h2 id="4">4. 数据库设置与初始化</h2>
-<p>GENIUS-LLM 利用 MongoDB 进行高速基因数据检索。服务必须处于激活状态，才能运行预测。</p>
-<p>🔹 Linux（systemd）：</p>
-<p>1.对于拥有 root 权限（sudo）的用户
-<div class="highlight"><pre><span></span><code>sudo systemctl start mongod
-# Verify status
-sudo systemctl status mongod
+<h2 id="4-database-setup-initialization">4. Database Setup &amp; Initialization</h2>
+<p>GENIUS-LLM utilizes <strong>MongoDB</strong> for high-speed genomic data retrieval. The MongoDB service must be active before running any predictions.</p>
+<p>🔹 For Linux Users (systemd):
+Option 1: Users with Root/Sudo Privileges
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mongod
+<span class="c1"># Verify status</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mongod
 </code></pre></div></p>
-<p>2.对于没有 root 权限的用户
-<div class="highlight"><pre><span></span><code># Create a local data directory
-mkdir -p ~/mongodb_data
-# Launch MongoDB locally on the default port
-mongod --dbpath ~/mongodb_data --port 27017 --fork --logpath ~/mongodb_data/mongodb.log
+<p>Option 2: Users without Root Privileges (Local Instance)
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a local data directory</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/mongodb_data
+<span class="c1"># Launch MongoDB locally on the default port</span>
+mongod<span class="w"> </span>--dbpath<span class="w"> </span>~/mongodb_data<span class="w"> </span>--port<span class="w"> </span><span class="m">27017</span><span class="w"> </span>--fork<span class="w"> </span>--logpath<span class="w"> </span>~/mongodb_data/mongodb.log
 </code></pre></div>
-🔹 对于Windows的用户：
-win+R ，输入services.msc，右键启动MongoDB Server (MongoDB)。</p>
-<p>"Everything set? Move to Quick Start Guide to run your first gene prediction!"</p>
+🔹 For Windows Users:</p>
+<ol>
+<li>
+<p>Press <strong>Win + R</strong>, type <strong>services.msc</strong>, and hit <strong>Enter</strong>.</p>
+</li>
+<li>
+<p>Locate <strong>MongoDB Server (MongoDB)</strong> in the list.</p>
+</li>
+<li>
+<p>Right-click it and select <strong>Start</strong>.</p>
+</li>
+</ol>
+<p>"Everything set? Move to <strong>Quick Start Guide</strong> to run your first gene prediction!"</p>
 
 
 

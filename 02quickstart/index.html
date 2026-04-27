@@ -503,6 +503,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. The Three-Step Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-format-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Format Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -510,6 +527,17 @@
     <span class="md-ellipsis">
       
         4. Expected Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sample-log-output-deepseek-v3-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sample Log Output (DeepSeek-V3 Example)
       
     </span>
   </a>
@@ -662,6 +690,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. The Three-Step Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-format-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Format Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -669,6 +714,17 @@
     <span class="md-ellipsis">
       
         4. Expected Output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sample-log-output-deepseek-v3-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sample Log Output (DeepSeek-V3 Example)
       
     </span>
   </a>
@@ -740,9 +796,57 @@ Step 3: Execute Prediction
 Run the intelligent prediction engine to infer gene functions.
 <div class="highlight"><pre><span></span><code>genius-predict
 </code></pre></div></p>
+<h3 id="data-format-requirements">Data Format Requirements</h3>
+<p>Please ensure that all input data files strictly adhere to the following format requirements to ensure successful processing and database ingestion:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Data Category</th>
+<th style="text-align: left;">Supported File Formats</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>BLAST</strong></td>
+<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
+<td style="text-align: left;">Sequence similarity and alignment results.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tissue (Expression)</strong></td>
+<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
+<td style="text-align: left;">Tissue-specific gene expression profiles (e.g., TPM).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KEGG</strong></td>
+<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
+<td style="text-align: left;">Pathway enrichment and functional descriptions.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GO</strong></td>
+<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
+<td style="text-align: left;">Gene Ontology terms and functional annotations.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-gene Data</strong></td>
+<td style="text-align: left;"><code>.xlsx</code></td>
+<td style="text-align: left;">Homologous gene mapping and multi-gene datasets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TWAS</strong></td>
+<td style="text-align: left;"><code>.xlsx</code></td>
+<td style="text-align: left;">Transcriptome-Wide Association Study results.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>⚠️ Important</strong>: 
+* For <strong>CSV/TXT</strong> files, ensure consistent delimiters (comma or tab) are used. 
+* For <strong>XLSX</strong> files, ensure the data is located in the first sheet unless otherwise specified in the configuration.</p>
+</blockquote>
 <h2 id="4-expected-output">4. Expected Output</h2>
 <p>After running genius-predict, you should see logs indicating the progress. The final results will be saved in the directory defined in your config (default: predict_results/).</p>
-<p>Sample Log Output(以deepseek输出结果为例):
+<h2 id="5-sample-log-output-deepseek-v3-example">5. Sample Log Output (DeepSeek-V3 Example)</h2>
 <div class="highlight"><pre><span></span><code>--- GENIUS-LLM Prediction System ---
 2026-04-23 18:51:42,984 - INFO - Starting prediction for Gene ID: AT1G03000
 2026-04-23 18:51:48,205 - INFO - Prompt successfully generated.
@@ -755,7 +859,7 @@ Run the intelligent prediction engine to infer gene functions.
             *
 2026-04-23 18:52:06,391 - INFO - Task completed successfully.
 2026-04-23 18:52:06,391 - INFO - Prediction result successfully saved to predict_results\AT1G03000_prediction.txt
-</code></pre></div></p>
+</code></pre></div>
 
 
 
