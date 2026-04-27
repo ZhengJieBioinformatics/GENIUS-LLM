@@ -695,37 +695,48 @@
   
 
 
-<p>这是为了<strong>回应审稿人 #5 关于 502 错误</strong>的质疑（教他们如何在本地跑起来）：</p>
 <h1 id="quick-start-guide">🚀 Quick Start Guide</h1>
 <p>This guide will walk you through the standard workflow of <strong>GENIUS-LLM</strong>, from downloading the source code to generating your first gene function prediction.</p>
 <hr />
 <h2 id="1-download-the-project">1. Download the Project</h2>
-<p>Use <code>git</code> to clone the repository directly from GitHub. This ensures you have the latest version of the framework.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository</span>
-git<span class="w"> </span>clone<span class="w"> </span><span class="o">[</span>https://github.com/yimengzhiyan/GENIUS-LLM.git<span class="o">](</span>https://github.com/yimengzhiyan/GENIUS-LLM.git<span class="o">)</span>
+<p>To install <strong>GENIUS-LLM</strong>, follow these steps:
+From Source:
+<div class="highlight"><pre><span></span><code># 1. Clone the repository
+git clone https://github.com/ZhengJieBioinformatics/GENIUS-LLM.git
+cd GENIUS-LLM
 
-<span class="c1"># Enter the project directory</span>
-<span class="nb">cd</span><span class="w"> </span>GENIUS-LLM
+# 2. Create a clean environment (Optional but highly recommended)
+conda create -n genius_llm python=3.12 -y
+conda activate genius_llm
+
+# 3. Install dependencies first to avoid failures
+pip install -r requirements.txt
+
+# 4. Install GENIUS-LLM in editable mode
+pip install -e .
 </code></pre></div>
+Find out packages that lead to failures, then create a new requirements.txt of them and run:
+<div class="highlight"><pre><span></span><code>pip install -r requirements.txt
+</code></pre></div></p>
 <h2 id="2-fast-configuration">2. Fast Configuration</h2>
 <p>Before running, you must provide your API credentials. GENIUS-LLM is designed to be provider-agnostic.</p>
 <p>Edit config/data_config.yaml:
 <div class="highlight"><pre><span></span><code>model:
-    url: https://api.openai.com/v1 # 这里展示API 的基准地址，你可根据自己的情况修改
+    url: https://api.openai.com/v1 # 这里展示API 的基准地址，你可根据自己的LLM情况自行修改
     api_key: sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # replace your api_key
     model: The model you want to use # 你使用的模型名称
 </code></pre></div></p>
 <h2 id="3-the-three-step-workflow">3. The Three-Step Workflow</h2>
 <p>GENIUS-LLM simplifies complex bioinformatics pipelines into three standardized commands.</p>
-<p>Step 1: Import Knowledge Base
-First, populate your local MongoDB with gene annotation data.
-<div class="highlight"><pre><span></span><code>genius-import<span class="w"> </span>--input<span class="w"> </span>./data/example_annotations.csv
-</code></pre></div>
-Step 2: Pre-process Raw Data
+<p>Step 1: Pre-process Raw Data
 Clean and format your input data for LLM compatibility.
-<div class="highlight"><pre><span></span><code>genius-process<span class="w"> </span>--input<span class="w"> </span>./data/raw_samples.xlsx<span class="w"> </span>--output<span class="w"> </span>./data/cleaned_data.csv
-</code></pre></div></p>
-<p>Step 3: Execute Prediction
+<div class="highlight"><pre><span></span><code>genius-process<span class="w"> </span>
+</code></pre></div>
+Step 2: Import Knowledge Base
+First, populate your local MongoDB with gene annotation data.
+<div class="highlight"><pre><span></span><code>genius-import<span class="w"> </span>
+</code></pre></div>
+Step 3: Execute Prediction
 Run the intelligent prediction engine to infer gene functions.
 <div class="highlight"><pre><span></span><code>genius-predict
 </code></pre></div></p>
@@ -828,6 +839,10 @@ Run the intelligent prediction engine to infer gene functions.
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

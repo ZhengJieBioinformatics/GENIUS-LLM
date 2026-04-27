@@ -752,14 +752,18 @@
 
 
 <h1 id="configuration-guide">⚙️ Configuration Guide</h1>
-<p>GENIUS-LLM uses a centralized YAML configuration system to manage paths, models, and processing logic.</p>
+<p><em>GENIUS-LLM</em> uses a centralized YAML configuration system to manage paths, models, and processing logic.</p>
 <h2 id="1-project-structure">1. Project Structure</h2>
 <p>To ensure the automated path detection (GPS Logic) works correctly, please maintain the following structure:
 <div class="highlight"><pre><span></span><code>GENIUS-LLM/
 ├── config/
 │   └── data_config.yaml    # Main configuration
 ├── data/                   # Input and processed data
+|   ├── yourdata_process/
+|   └── yourdata_process_output/
 ├── src/                    # Source code
+├── scripts/                # main Scripts
+├── requirements.txt
 └── setup.py
 </code></pre></div></p>
 <h2 id="2-yaml-field-explanations">2. YAML Field Explanations</h2>
@@ -876,6 +880,10 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

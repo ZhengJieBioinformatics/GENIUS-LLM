@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#models-setup-inference-logic" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -468,6 +473,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -485,6 +510,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-rag-backend-mongodb-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RAG Backend: MongoDB Indexing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-bioinformatic-filtering-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Bioinformatic Filtering Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-inference-analysis-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Inference Analysis Chain
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -534,6 +611,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-rag-backend-mongodb-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RAG Backend: MongoDB Indexing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-bioinformatic-filtering-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Bioinformatic Filtering Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-inference-analysis-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Inference Analysis Chain
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -553,9 +673,65 @@
   
 
 
-  <h1>Model Setup</h1>
+<h1 id="models-setup-inference-logic">🛠️ Models Setup &amp; Inference Logic</h1>
+<p>Based on the configuration defined in config.yaml, this section details the execution environment, Large Language Model (LLM) parameters, and the bioinformatic filtering criteria used for gene function inference.</p>
+<h2 id="1-rag-backend-mongodb-indexing">1. RAG Backend: MongoDB Indexing</h2>
+<p>The platform utilizes a Retrieval-Augmented Generation (RAG) architecture. The LLM does not rely solely on its internal training data but queries a local MongoDB instance to retrieve biologically grounded evidence.</p>
+<p>Database: arabidopsis_gene_db (Current focus: Arabidopsis thaliana)</p>
+<p>Storage Logic:
+<div class="highlight"><pre><span></span><code>Blast Similarity: Stored in gene_blast_similarity.
 
-<p>11111111111111</p>
+Regulatory Networks: Co-expression weights stored in gene_coexpression.
+
+Phenotypic Associations: TWAS results stored in gene_trait_twas.
+</code></pre></div></p>
+<h2 id="2-bioinformatic-filtering-thresholds">2. Bioinformatic Filtering Thresholds</h2>
+<p>To ensure the high-quality synthesis of multi-omics data, the system applies hard thresholds defined in the common section of the configuration before passing data to the LLM.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Data Category</th>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Threshold Value</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>BLAST</strong></td>
+<td style="text-align: left;">Similarity</td>
+<td style="text-align: left;"><span class="arithmatex">\(\ge 0.9\)</span></td>
+<td style="text-align: left;">Ensures high-confidence sequence homology.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>BLAST</strong></td>
+<td style="text-align: left;">E-value</td>
+<td style="text-align: left;"><span class="arithmatex">\(\le 1 \times 10^{-5}\)</span></td>
+<td style="text-align: left;">Filters out random alignments.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Co-expression</strong></td>
+<td style="text-align: left;">Edge Weight</td>
+<td style="text-align: left;"><span class="arithmatex">\(\ge 0.9\)</span></td>
+<td style="text-align: left;">Focuses on strong regulatory relationships.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TWAS</strong></td>
+<td style="text-align: left;">Z-score</td>
+<td style="text-align: left;"><span class="arithmatex">\(\ge 2.0\)</span></td>
+<td style="text-align: left;">Identifies statistically significant trait associations.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-inference-analysis-chain">3. Inference Analysis Chain</h2>
+<p>The system processes information through a structured Chain-of-Thought (CoT) approach:
+<div class="highlight"><pre><span></span><code>A. Data Retrieval: The system extracts structured snippets from MongoDB based on the target gene query.
+
+B. Context Construction: Retrieved data (BLAST, Expression, GO/KEGG) are converted into a natural language prompt.
+
+C. LLM Reasoning: The model synthesizes heterogeneous evidence to form a functional hypothesis.
+</code></pre></div>
+Logging &amp; Output: All intermediate reasoning steps and final predictions are stored in the configured log_path (logs/) and predict_result_output_path (predict_results) for academic audit and reproducibility.</p>
 
 
 
@@ -639,6 +815,10 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

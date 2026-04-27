@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#compatibility-matrix-llm-support" class="md-skip">
+        <a href="#llm-support" class="md-skip">
           Skip to content
         </a>
       
@@ -739,8 +739,8 @@
   
 
 
-<h1 id="compatibility-matrix-llm-support">📊 Compatibility Matrix &amp; LLM Support</h1>
-<p>Reviewer #4 noted the use of the OpenAI client in our codebase. We would like to clarify that <strong>GENIUS-LLM</strong> adopts a <strong>Protocol-Oriented Architecture</strong>. We utilize the OpenAI Python library not as a provider-specific lock-in, but as a <strong>universal adapter</strong> for the industry-standard completion protocol.</p>
+<h1 id="llm-support">📊 LLM Support</h1>
+<p><strong>GENIUS-LLM</strong> adopts a <strong>Protocol-Oriented Architecture</strong>. We utilize the OpenAI Python library not as a provider-specific lock-in, but as a <strong>universal adapter</strong> for the industry-standard completion protocol.</p>
 <hr />
 <h2 id="1-supported-models-matrix">1. Supported Models Matrix</h2>
 <p>The following table explicitly lists the models verified with the current release of GENIUS-LLM. Compatibility is achieved by simply updating the <code>url</code> and <code>model</code> fields in <code>data_config.yaml</code>.</p>
@@ -894,6 +894,10 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
