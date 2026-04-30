@@ -495,22 +495,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-the-three-step-workflow" class="md-nav__link">
+  <a href="#3-start-mongodb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. The Three-Step Workflow
+        3. Start MongoDB
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. The Three-Step Workflow">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-three-step-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Three-Step Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Three-Step Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#data-format-requirements" class="md-nav__link">
+  <a href="#step-1-pre-process-raw-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Format Requirements
+        Step 1: Pre-process Raw Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-import-knowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Import Knowledge Base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-execute-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Execute Prediction
       
     </span>
   </a>
@@ -541,6 +574,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6data-input-format-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.Data Input Format Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.Data Input Format Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processing-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Processing Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -682,22 +743,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-the-three-step-workflow" class="md-nav__link">
+  <a href="#3-start-mongodb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. The Three-Step Workflow
+        3. Start MongoDB
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. The Three-Step Workflow">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-three-step-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Three-Step Workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Three-Step Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#data-format-requirements" class="md-nav__link">
+  <a href="#step-1-pre-process-raw-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Format Requirements
+        Step 1: Pre-process Raw Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-import-knowledge-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Import Knowledge Base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-execute-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Execute Prediction
       
     </span>
   </a>
@@ -728,6 +822,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6data-input-format-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.Data Input Format Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.Data Input Format Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processing-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Processing Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -777,89 +899,260 @@ Find out packages that lead to failures, then create a new requirements.txt of t
 <h2 id="2-fast-configuration">2. Fast Configuration</h2>
 <p>Before running, you must provide your API credentials. GENIUS-LLM is designed to be provider-agnostic.</p>
 <p>Edit config/data_config.yaml:
+<div class="highlight"><pre><span></span><code>cd config/data_config.yaml
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>model:
     url: https://api.openai.com/v1 # 这里展示API 的基准地址，你可根据自己的LLM情况自行修改
     api_key: sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # replace your api_key
     model: The model you want to use # 你使用的模型名称
 </code></pre></div></p>
-<h2 id="3-the-three-step-workflow">3. The Three-Step Workflow</h2>
+<h2 id="3-start-mongodb">3. Start MongoDB</h2>
+<p>Before running any commands, the MongoDB service must be active.</p>
+<p>Option A (Standard): 
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mongod
+</code></pre></div>
+Option B (No-root/Conda):
+<div class="highlight"><pre><span></span><code>mongod<span class="w"> </span>--dbpath<span class="w"> </span>./mongodb_data<span class="w"> </span>--port<span class="w"> </span><span class="m">27017</span><span class="w"> </span>--fork<span class="w"> </span>--logpath<span class="w"> </span>./mongodb_data/mongodb.log
+</code></pre></div></p>
+<h2 id="4-the-three-step-workflow">4. The Three-Step Workflow</h2>
 <p>GENIUS-LLM simplifies complex bioinformatics pipelines into three standardized commands.</p>
-<p>Step 1: Pre-process Raw Data
-Clean and format your input data for LLM compatibility.
+<p>**If execution fails, please check whether <code>config/data_config.yaml</code> has been properly updated.</p>
+<h3 id="step-1-pre-process-raw-data">Step 1: Pre-process Raw Data</h3>
+<p>Clean and format your input data for LLM compatibility.
 <div class="highlight"><pre><span></span><code>genius-process<span class="w"> </span>
 </code></pre></div>
-Step 2: Import Knowledge Base
-First, populate your local MongoDB with gene annotation data.
-<div class="highlight"><pre><span></span><code>genius-import<span class="w"> </span>
+<strong>What it does</strong>: Reads raw files (CSV/XLSX/TXT) from <code>data/yourdata_process</code> and converts them into structured text.</p>
+<p><strong>Output</strong>: Generated text files in <code>data/yourdata_process_output/</code>.
+If you successfully process the raw data, you will see:</p>
+<details class="success">
+<summary>View the pre-processed logs</summary>
+<div class="highlight"><pre><span></span><code>(genius_llm) [zhengjie@localhost GENIUS-LLM]$ genius-process
+Processing blast...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/01gene_blast.txt
+Processing BlastProcessor...
+Finished processing BlastProcessor
+✅ blast processed successfully.
+Processing coexpression...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/02cultivar
+Processing CoexpressionProcessor...
+Finished processing CoexpressionProcessor
+✅ coexpression processed successfully.
+Processing expression...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/03all_Tissue_mean_TPM.csv
+Processing ExpressionProcessor...
+Finished processing ExpressionProcessor
+✅ expression processed successfully.
+Processing homolog...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/04multi_gene_data.xlsx
+Processing HomologProcessor...
+Finished processing HomologProcessor
+✅ homolog processed successfully.
+Processing twas...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/05TWAS_out_240925.xlsx
+Processing TwasProcessor...
+Finished processing TwasProcessor
+✅ twas processed successfully.
+Processing kegg...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/06KEGG.csv
+Processing KEGGProcessor...
+Finished processing KEGGProcessor
+✅ kegg processed successfully.
+Processing go...
+  Input: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process/07GO.csv
+Processing GOProcessor...
+Finished processing GOProcessor
+✅ go processed successfully.
 </code></pre></div>
-Step 3: Execute Prediction
-Run the intelligent prediction engine to infer gene functions.
-<div class="highlight"><pre><span></span><code>genius-predict
+</details>
+<h3 id="step-2-import-knowledge-base">Step 2: Import Knowledge Base</h3>
+<p>First, make sure your MongoDB is running.Then populate your local MongoDB with gene annotation data.
+<div class="highlight"><pre><span></span><code>genius-import<span class="w"> </span>
 </code></pre></div></p>
-<h3 id="data-format-requirements">Data Format Requirements</h3>
-<p>Please ensure that all input data files strictly adhere to the following format requirements to ensure successful processing and database ingestion:</p>
+<p><strong>What it does</strong>: Connects to your local MongoDB and uploads the pre-processed data.</p>
+<p><strong>Verification</strong>: You can check the import status in the logs or via MongoDB Shell.</p>
+<p>Method 1: Check the Console &amp; Log Files
+<div class="highlight"><pre><span></span><code><span class="c1"># View the last 20 lines of the log</span>
+tail<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>logs/import_data.log<span class="w"> </span>
+</code></pre></div>
+Method 2: Inspect via MongoDB Shell (Most Reliable)</p>
+<p>If you successfully import the data, you will see:
+This confirms the data is actually residing in the database engine. Run the following commands in your terminal:
+<div class="highlight"><pre><span></span><code>mongosh<span class="w"> </span>--port<span class="w"> </span><span class="m">27017</span><span class="w"> </span><span class="c1">#Connect to the database</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// Switch to the project database</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">arabidopsis_gene_db</span>
+
+<span class="c1">// List all collections to ensure they were created</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">collections</span>
+
+<span class="c1">// Count records in a specific collection (e.g., GO terms)</span>
+<span class="c1">// It should return a number &gt; 0 (e.g., 191057)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">go_terms</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">()</span>
+
+<span class="c1">// Preview one document to check if the fields are correctly mapped</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">gene_expression</span><span class="p">.</span><span class="nx">findOne</span><span class="p">()</span>
+
+<span class="c1">// Exit the shell</span>
+<span class="nx">exit</span>
+</code></pre></div></p>
+<p>You should see something like this:
+<div class="highlight"><pre><span></span><code>arabidopsis_gene_db&gt; db.gene_expression.findOne()
+{
+  _id: ObjectId(&#39;69f2cb65d35dc210de591c42&#39;),
+  gene_id: &#39;Ghir_A01G000010&#39;,
+  tissue_expression: { anther: 0.347761 }
+}
+</code></pre></div></p>
+<details class="success">
+<summary>View the import logs</summary>
+<div class="highlight"><pre><span></span><code>(genius_llm) [zhengjie@localhost GENIUS-LLM]$ genius-import
+Starting import for blast...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/blast_results_text.txt
+Importing data to collection: gene_blast_similarity
+Finished importing data to gene_blast_similarity
+  ✅ Finished import for blast.
+Starting import for coexpression...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/coexpression_output.txt
+Importing data to collection: gene_coexpression
+Finished importing data to gene_coexpression
+  ✅ Finished import for coexpression.
+Starting import for expression...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/expression_output.txt
+Starting to process file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/expression_output.txt
+Parsed 65608 records from /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/expression_output.txt
+Successfully imported data into collection: gene_expression
+  ✅ Finished import for expression.
+Starting import for homolog...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/homolog_output.txt
+Importing data to collection: homologous_genes
+Finished importing data to homologous_genes
+  ✅ Finished import for homolog.
+Starting import for twas...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/twas_output.txt
+Importing data to collection: gene_trait_twas
+Finished importing data to gene_trait_twas
+  ✅ Finished import for twas.
+Starting import for kegg...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/KEGG_descriptions.txt
+Starting to process KEGG file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/KEGG_descriptions.txt
+Parsed 68835 records from /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/KEGG_descriptions.txt
+Successfully imported data into collection: kegg_pathways
+  ✅ Finished import for kegg.
+Starting import for go...
+  Source file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/GO_descriptions.txt
+Starting to process GO file: /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/GO_descriptions.txt
+Parsed 191057 records from /home/zhengjie/test_genius/GENIUS-LLM/data/yourdata_process_output/GO_descriptions.txt
+Successfully imported data into collection: go_terms
+  ✅ Finished import for go.
+</code></pre></div>
+</details>
+<h3 id="step-3-execute-prediction">Step 3: Execute Prediction</h3>
+<p>Run the intelligent prediction engine to infer gene functions.
+<div class="highlight"><pre><span></span><code>genius-predict<span class="w"> </span>AT1G01010
+</code></pre></div></p>
+<p><strong>What it does</strong>: Retrieves multi-omics data for the specific gene and calls the LLM to generate a reasoning report.</p>
+<h2 id="4-expected-output">4. Expected Output</h2>
+<p>After running genius-predict, you should see logs indicating the progress. The final results will be saved in the directory defined in your config (default: <code>predict_results/</code>).</p>
+<h2 id="5-sample-log-output-deepseek-v3-example">5. Sample Log Output (DeepSeek-V3 Example)</h2>
+<div class="highlight"><pre><span></span><code>(genius_llm) [zhengjie@localhost GENIUS-LLM]$ genius-predict AT1G03000
+
+--- GENIUS-LLM Prediction System ---
+2026-04-30 12:25:44,855 - INFO - Starting prediction for Gene ID: AT1G03000
+2026-04-30 12:25:45,164 - INFO - Prompt successfully generated.
+2026-04-30 12:25:45,763 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions &quot;HTTP/1.1 200 OK&quot;
+2026-04-30 12:25:51,167 - INFO - Model response received.
+
+=== Prediction Result ===
+ Based on a comprehensive analysis of all available datasets for the target gene &#39;AT1G03000&#39;, here is a detailed prediction of its biological function.
+
+### Final Analysis for Gene &#39;AT1G03000&#39;
+
+#### 1. Predicted Function
+Due to the complete absence of data from all seven provided sources (BLAST, Co-expression, Expression, Homologous genes, TWAS, GO, and KEGG), the biological function of gene &#39;AT1G03000&#39; cannot be predicted based on these datasets alone. The gene is likely either conditionally expressed (e.g., only under specific stress or developmental stages not tested in the provided data), a non-coding RNA with a regulatory function, or a currently uncharacterized locus.
+
+#### 2. Supporting Evidence
+Since no data was found in any category, there is no evidence to support a specific functional prediction.
+
+#### 3. Potential Traits
+Without any expression, TWAS, or homology data, no specific traits can be associated with gene &#39;AT1G03000&#39;. The gene&#39;s influence on any trait is unknown.
+
+#### 4. Upregulation/Downregulation Analysis
+No expression data is available. Therefore, an analysis of upregulation or downregulation in specific tissues or conditions is not possible.
+
+#### 5. Step-by-Step Reasoning
+1.  **Firstly**, the highest priority data source (TWAS) provided no associations. This means there is no direct statistical link between this gene and any specific trait or phenotype in the provided datasets.
+2.  **Furthermore**, the medium-high confidence data (Homologous Gene Data) and medium confidence data (Expression Data) are both empty. This failure to find conserved functions or tissue-specific activity severely limits the ability to infer a role.
+3.  **Lastly**, all supporting and foundational data sources (BLAST, Co-expression, GO, and KEGG) are also unavailable. The complete absence of information across all data types prevents any meaningful functional inference. The gene remains uncharacterized within the scope of the provided datasets.
+2026-04-30 12:25:51,167 - INFO - Task completed successfully.
+2026-04-30 12:25:51,167 - INFO - Prediction result successfully saved to /home/zhengjie/test_genius/GENIUS-LLM/predict_results/AT1G03000_prediction.txt
+</code></pre></div>
+<h2 id="6data-input-format-specifications">6.Data Input Format Specifications</h2>
+<p>To ensure the <code>genius-process</code> script correctly parses your raw data, please prepare your files according to the required headers and formats listed below.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Data Category</th>
-<th style="text-align: left;">Supported File Formats</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Required Headers</th>
+<th style="text-align: left;">File Format</th>
+<th style="text-align: left;">Example Record</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>BLAST</strong></td>
-<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
-<td style="text-align: left;">Sequence similarity and alignment results.</td>
+<td style="text-align: left;"><code>query</code>, <code>subject</code>, <code>similarity</code>, <code>alignment_length</code>, <code>mismatches</code>, <code>gap_openings</code>, <code>q_start</code>, <code>q_end</code>, <code>s_start</code>, <code>s_end</code>, <code>e_value</code>, <code>bit_score</code></td>
+<td style="text-align: left;"><code>TXT</code> (Space-sep, <strong>No Header</strong>)</td>
+<td style="text-align: left;"><code>GeneA GeneB 85.5 200 2 0 1 200 50 250 1e-50 450</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Tissue (Expression)</strong></td>
-<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
-<td style="text-align: left;">Tissue-specific gene expression profiles (e.g., TPM).</td>
+<td style="text-align: left;"><strong>Co-expression</strong></td>
+<td style="text-align: left;"><code>row</code>, <code>col</code>, <code>weight</code></td>
+<td style="text-align: left;"><code>TXT</code> (Space-sep, With Header)</td>
+<td style="text-align: left;"><code>GeneA GeneB 0.956789</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>KEGG</strong></td>
-<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
-<td style="text-align: left;">Pathway enrichment and functional descriptions.</td>
+<td style="text-align: left;"><strong>Expression</strong></td>
+<td style="text-align: left;"><code>GeneId</code>, <code>Tissue_1</code>, <code>Tissue_2</code>, ...</td>
+<td style="text-align: left;"><code>CSV</code> (Comma-separated)</td>
+<td style="text-align: left;"><code>GeneA, 12.5, 0.0, 8.45</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>GO</strong></td>
-<td style="text-align: left;"><code>.csv</code>, <code>.txt</code></td>
-<td style="text-align: left;">Gene Ontology terms and functional annotations.</td>
+<td style="text-align: left;"><code>GeneID</code>, <code>GO</code>, <code>Ontology</code>, <code>Description</code></td>
+<td style="text-align: left;"><code>CSV</code> (Comma-separated)</td>
+<td style="text-align: left;"><code>GeneA, GO:0008150, BP, cell growth</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Multi-gene Data</strong></td>
-<td style="text-align: left;"><code>.xlsx</code></td>
-<td style="text-align: left;">Homologous gene mapping and multi-gene datasets.</td>
+<td style="text-align: left;"><strong>KEGG</strong></td>
+<td style="text-align: left;"><code>GeneID</code>, <code>KEGG</code>, <code>KEGG_Description</code></td>
+<td style="text-align: left;"><code>CSV</code> (Comma-separated)</td>
+<td style="text-align: left;"><code>GeneA, path:ath00010, Glycolysis</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>TWAS</strong></td>
-<td style="text-align: left;"><code>.xlsx</code></td>
-<td style="text-align: left;">Transcriptome-Wide Association Study results.</td>
+<td style="text-align: left;"><code>GeneID</code>, <code>Phenotype</code>, <code>Stage</code>, <code>TWAS.Zscore</code></td>
+<td style="text-align: left;"><code>XLSX</code> (Must be <strong>Sheet1</strong>)</td>
+<td style="text-align: left;"><code>GeneA, FE, Stage_1, 3.4567</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Homolog</strong></td>
+<td style="text-align: left;"><code>GeneID</code>, <code>Homology of AtGi</code>, <code>Symbol</code>, <code>Full_name</code>, <code>Chr.</code>, <code>Start</code>, <code>End</code>, <code>Function description</code></td>
+<td style="text-align: left;"><code>XLSX</code></td>
+<td style="text-align: left;"><code>GeneA, AT1G01010, ABC1, Protein X, Chr1, 100, 500, Kinase</code></td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h3 id="processing-notes">🛠️ Processing Notes</h3>
 <blockquote>
-<p><strong>⚠️ Important</strong>: 
-* For <strong>CSV/TXT</strong> files, ensure consistent delimiters (comma or tab) are used. 
-* For <strong>XLSX</strong> files, ensure the data is located in the first sheet unless otherwise specified in the configuration.</p>
+<ul>
+<li><strong>BLAST Header Requirement</strong>: The system reads BLAST files without a header (<code>header=None</code>). Ensure the first line of the file contains actual data.</li>
+<li><strong>Co-expression Threshold</strong>: The processor only handles gene pairs with a <code>weight &gt; 0.9</code> to ensure the reliability of functional inference.</li>
+<li><strong>Dynamic Expression Columns</strong>: Except for the first column (<code>GeneId</code>), all subsequent columns are automatically identified as tissue names.</li>
+<li><strong>TWAS Phenotype Mapping</strong>: The system includes a built-in mapping dictionary that automatically converts abbreviations (e.g., <code>FE</code>, <code>FS</code>, <code>FU</code>, <code>FL</code>) into full fiber trait descriptions.</li>
+<li><strong>Homology Data Completion</strong>: If any column in the homology table is missing data, the system will automatically fill the field with <code>NA</code>.</li>
+</ul>
 </blockquote>
-<h2 id="4-expected-output">4. Expected Output</h2>
-<p>After running genius-predict, you should see logs indicating the progress. The final results will be saved in the directory defined in your config (default: predict_results/).</p>
-<h2 id="5-sample-log-output-deepseek-v3-example">5. Sample Log Output (DeepSeek-V3 Example)</h2>
-<div class="highlight"><pre><span></span><code>--- GENIUS-LLM Prediction System ---
-2026-04-23 18:51:42,984 - INFO - Starting prediction for Gene ID: AT1G03000
-2026-04-23 18:51:48,205 - INFO - Prompt successfully generated.
-2026-04-23 18:51:49,612 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions &quot;HTTP/1.1 200 OK&quot;
-2026-04-23 18:52:06,390 - INFO - Model response received.
-
-=== Prediction Result ===
-            *
-            *
-            *
-2026-04-23 18:52:06,391 - INFO - Task completed successfully.
-2026-04-23 18:52:06,391 - INFO - Prediction result successfully saved to predict_results\AT1G03000_prediction.txt
-</code></pre></div>
 
 
 
