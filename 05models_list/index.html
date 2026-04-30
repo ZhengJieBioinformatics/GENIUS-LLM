@@ -603,10 +603,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-switching-to-a-local-llama-3-via-vllm" class="md-nav__link">
+  <a href="#example-switching-to-a-via-vllm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: Switching to a Local Llama-3 (via vLLM)
+        Example: Switching to a (via vLLM)
       
     </span>
   </a>
@@ -704,10 +704,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-switching-to-a-local-llama-3-via-vllm" class="md-nav__link">
+  <a href="#example-switching-to-a-via-vllm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: Switching to a Local Llama-3 (via vLLM)
+        Example: Switching to a (via vLLM)
       
     </span>
   </a>
@@ -750,44 +750,24 @@
 <th style="text-align: left;">Model Category</th>
 <th style="text-align: left;">Representative Models</th>
 <th style="text-align: left;">Protocol Status</th>
-<th style="text-align: left;">Support Level</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>OpenAI Series</strong></td>
-<td style="text-align: left;">GPT-4o, GPT-4-turbo, GPT-3.5</td>
-<td style="text-align: left;">Native</td>
-<td style="text-align: left;">✅ Verified</td>
+<td style="text-align: left;"><strong>Official OpenAI Models</strong></td>
+<td style="text-align: left;">GPT-4o, GPT-4 Turbo, GPT-3.5</td>
+<td style="text-align: left;">Native Support</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>DeepSeek Series</strong></td>
-<td style="text-align: left;">DeepSeek-V3, DeepSeek-Chat</td>
-<td style="text-align: left;">OpenAI-Compatible</td>
-<td style="text-align: left;">✅ Verified</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Local LLMs</strong></td>
-<td style="text-align: left;">Llama 3, Qwen, Mistral</td>
-<td style="text-align: left;">via vLLM / Ollama</td>
-<td style="text-align: left;">✅ Verified</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>National LLMs</strong></td>
-<td style="text-align: left;">Moonshot (Kimi), Zhipu AI</td>
-<td style="text-align: left;">OpenAI-Compatible</td>
-<td style="text-align: left;">✅ Verified</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Other Protocols</strong></td>
-<td style="text-align: left;">Claude, Gemini</td>
-<td style="text-align: left;">Native SDK</td>
-<td style="text-align: left;">🔄 via Proxy*</td>
+<td style="text-align: left;"><strong>OpenAI-Compatible Models</strong></td>
+<td style="text-align: left;">DeepSeek (V3/Chat), Qwen, Moonshot (Kimi), Zhipu AI, Llama 3 (via vLLM)</td>
+<td style="text-align: left;">Universal OpenAI-Style Protocol</td>
 </tr>
 </tbody>
 </table>
+<hr />
 <blockquote>
-<p><strong>Note on Claude/Gemini</strong>: To maintain a lightweight codebase without dependency bloat, native SDKs for Anthropic/Google are not included. However, users can access these models via API gateways (e.g., <strong>One-API</strong> or <strong>LiteLLM</strong>) that convert their requests into the standard OpenAI format.</p>
+<p>By adhering to the <strong>OpenAI-standardized</strong> API format, <strong>GENIUS-LLM</strong> provides seamless integration across a wide range of providers. Users can switch between high-performance proprietary models and cost-effective local or regional alternatives (like <strong>DeepSeek-V3</strong>) without changing a single line of core code.</p>
 </blockquote>
 <hr />
 <h2 id="2-decoupled-architecture">2. Decoupled Architecture</h2>
@@ -805,11 +785,11 @@
 <hr />
 <h2 id="3-how-to-switch-models-step-by-step">3. How to Switch Models (Step-by-Step)</h2>
 <p>To switch from the default configuration to a different provider, modify your <code>config/data_config.yaml</code> as follows:</p>
-<h3 id="example-switching-to-a-local-llama-3-via-vllm">Example: Switching to a Local Llama-3 (via vLLM)</h3>
+<h3 id="example-switching-to-a-via-vllm">Example: Switching to a  (via vLLM)</h3>
 <div class="highlight"><pre><span></span><code><span class="nt">model</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;not-needed-for-local&quot;</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8000/v1&quot;</span>
-<span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;meta-llama/Meta-Llama-3-8B-Instruct&quot;</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.openai.com/v1</span><span class="w"> </span><span class="c1"># Here is the base URL for the API; you can modify it according to your specific LLM configuration.</span>
+<span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="w"> </span><span class="c1"># Replace your api_key</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GPT-4o</span><span class="w"> </span><span class="c1">#The model you want to use </span>
 </code></pre></div>
 
 
